@@ -1,0 +1,220 @@
+%%% customization of titles
+
+% These macros employ a little dirty trick to convince LaTeX to typeset
+% chapter headings sanely, without lots of empty space above them.
+% Feel free to ignore.
+\makeatletter
+\def\@makechapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries \thechapter. #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\def\@makeschapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\makeatother
+
+%%% upgright greek letters
+\newcommand{\g}[1]{\foreignlanguage{greek}{#1}}
+% if we want to use greek sigma which is not written at the end of the word as
+% a standalone letter we have to use s\noboundary to not write it as a terminal
+% sigma
+
+%%% Symbols and math
+
+% symbols
+\chardef\promile=141
+\newcommand{\mat}[1]{\bm{#1}}
+
+% functions
+\newcommand{\func}[1]{\operatorname{#1}}
+
+% tensor
+\newcommand{\tens}[1]{\overset{\scriptscriptstyle\leftrightarrow}{#1}}
+
+% physical quantities and units
+\newcommand{\wn}{\tilde{\nu}}  % wavenumber
+\newcommand{\icm}{cm$^{-1}$}  % reciprocal centimeters
+
+% quantum mechanic helpers
+\newcommand{\bra}[1]{\ensuremath{\left\langle{#1}\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|{#1}\right\rangle}}
+\newcommand{\braket}[2]{\ensuremath{\left\langle{#1}\middle|{#2}\right\rangle}}
+\newcommand{\bramidket}[3]{%
+\ensuremath{\left\langle{#1}\middle|{#2}\middle|{#3}\right\rangle}}
+
+%%% floats
+
+% unified labels
+\newcommand{\figlabel}[1]{fig:#1}
+\newcommand{\tablabel}[1]{tab:#1}
+\newcommand{\eqnlabel}[1]{eqn:#1}
+
+% referemces to floats
+%\newcommand{\corb}{\kern-.12em}  % correction for italics before its usage,
+% for example inside parens
+%\newcommand{\cora}{\kern.12em}  % correction for italics after its usage
+%\newcommand{\fig}[1]{\corb\textit{Fig.~\ref{fig:#1}\cora}}
+%\newcommand{\tab}[1]{\corb\textit{Tab.~\ref{tab:#1}\cora}}
+\crefformat{figure}{\textit{#2fig.~#1#3}}
+\Crefformat{figure}{\textit{#2Fig.~#1#3}}
+\crefmultiformat{figure}{\textit{figs.~#2#1#3}}{ and~\textit{#2#1#3}}%
+	{, \textit{#2#1#3}}{ and~\textit{#2#1#3}}
+\Crefmultiformat{figure}{\textit{Figs.~#2#1#3}}{ and~\textit{#2#1#3}}%
+	{, \textit{#2#1#3}}{ and~\textit{#2#1#3}}
+\crefrangeformat{figure}{\textit{figs.~#3#1#4} to~\textit{#5#2#6}}
+\Crefrangeformat{figure}{\textit{Figs.~#3#1#4} to~\textit{#5#2#6}}
+\crefrangemultiformat{figure}{\textit{figs.~#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+	{, \textit{#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+\Crefrangemultiformat{figure}{\textit{Figs.~#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+	{, \textit{#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+\crefformat{table}{\textit{#2tab.~#1#3}}
+\Crefformat{table}{\textit{#2Tab.~#1#3}}
+\crefrangeformat{table}{\textit{tabs.~#3#1#4} to~\textit{#5#2#6}}
+\Crefrangeformat{table}{\textit{Tabs.~#3#1#4} to~\textit{#5#2#6}}
+\crefformat{equation}{\textit{#2eq.~#1#3}}
+\Crefformat{equation}{\textit{#2Eq.~#1#3}}
+\crefmultiformat{equation}{\textit{eqs.~#2#1#3}}{ and~\textit{#2#1#3}}%
+	{, \textit{#2#1#3}}{ and~\textit{#2#1#3}}
+\Crefmultiformat{equation}{\textit{Eqs.~#2#1#3}}{ and~\textit{#2#1#3}}%
+	{, \textit{#2#1#3}}{ and~\textit{#2#1#3}}
+\crefrangeformat{equation}{\textit{eqs.~#3#1#4} to~\textit{#5#2#6}}
+\Crefrangeformat{equation}{\textit{Eqs.~#3#1#4} to~\textit{#5#2#6}}
+\crefrangemultiformat{equation}{\textit{eqs.~#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+	{, \textit{#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+\Crefrangemultiformat{equation}{\textit{Eqs.~#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+	{, \textit{#3#1#4} to~\textit{#5#2#6}}%
+	{ and~\textit{#3#1#4} to~\textit{#5#2#6}}%
+\labelcrefformat{figure}{\textit{#2#1#3}}
+\labelcrefformat{table}{\textit{#2#1#3}}
+\labelcrefformat{equation}{\textit{#2#1#3}}
+\newcommand{\figref}[1]{\cref{\figlabel{#1}}}
+\newcommand{\Figref}[1]{\Cref{\figlabel{#1}}}
+\newcommand{\bfigref}[1]{(\textit{\figref{#1}})}
+\newcommand{\tabref}[1]{\cref{\tablabel{#1}}}
+\newcommand{\Tabref}[1]{\Cref{\tablabel{#1}}}
+\newcommand{\btabref}[1]{(\textit{\tabref{#1}})}
+\newcommand{\eqnref}[1]{\cref{\eqnlabel{#1}}}
+\newcommand{\Eqnref}[1]{\Cref{\eqnlabel{#1}}}
+\newcommand{\beqnref}[1]{(\textit{\eqnref{#1}})}
+
+% figures
+\newcommand{\ig}[2]{\includegraphics[width=#1\columnwidth]{#2}}
+% width in units of textwidth, filename
+
+\newcommand{\insertfigure}[5]{%
+	\begin{figure}[#5]
+		\centering
+		\ig{#3}{#2}
+		\caption{#1}
+		\label{\figlabel{#4}}
+	\end{figure}%
+}
+
+\newcommand{\captiontitle}[1]{%
+	\textbf{#1}%
+}
+
+%%% Enviroments without excessive vertical space
+
+% \compress command prevents insertion of vertical space before the environment
+\makeatletter
+\newcommand*{\compress}{\@minipagetrue}
+\makeatother
+
+\newenvironment{compdesc}[1][\quad]
+{\compress\begin{description}%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\parsep}{0pt}%
+	\setlength{\topsep}{0pt}%
+	\setlength{\leftmargin}{29.3747pt}%
+	\setlength{\itemindent}{\itemindent+5.87494pt}%
+	\setlength{\partopsep}{0pt}%
+}
+{\compress\end{description}\ignorespacesafterend}
+
+\newenvironment{compenum}[1][\quad]
+{\compress\begin{enumerate}%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\parsep}{0pt}%
+	\setlength{\topsep}{0pt}%
+	\setlength{\leftmargin}{29.3747pt}%
+	\setlength{\itemindent}{\itemindent+5.87494pt}%
+	\setlength{\partopsep}{0pt}%
+}
+{\compress\end{enumerate}\ignorespacesafterend}
+
+\newenvironment{compitemize}[1][\quad]
+{\compress\begin{itemize}%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\parsep}{0pt}%
+	\setlength{\topsep}{0pt}%
+	\setlength{\leftmargin}{29.3747pt}%
+	\setlength{\itemindent}{\itemindent+5.87494pt}%
+	\setlength{\partopsep}{0pt}%
+}
+{\compress\end{itemize}\ignorespacesafterend}
+
+% aliases for documentwide usage
+\let\docdesc\compdesc
+\let\enddocdesc\endcompdesc
+\let\docenum\compenum
+\let\enddocenum\endcompenum
+\let\docitemize\compitemize
+\let\enddocitemize\endcompitemize
+
+%%% Other
+
+%\DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
+
+% This macro defines a chapter, which is not numbered, but is included
+% in the table of contents.
+\def\chapwithtoc#1{
+\chapter*{#1}
+\addcontentsline{toc}{chapter}{#1}
+}
+
+% Draw black "slugs" whenever a line overflows, so that we can spot it easily.
+\overfullrule=1mm
+
+% mark missing citations
+\newcommand{\CITATION}{%
+		\PackageWarning{citations}{Missing citation!!!}%
+		\textcolor{red}{CITATION}}
+% mark missing references
+\newcommand{\REFERENCE}{%
+		\PackageWarning{references}{Missing reference!!!}%
+		\textcolor{red}{REFERENCE}}
+% mark place with inconsistency
+\newcommand{\INCONSISTENCY}{%
+		\PackageWarning{inconsistencies}{Possible inconsistency!!!}%
+		\textcolor{red}{INCONSISTENCY}}
+% mark missing citations
+\newcommand{\MISSING}{%
+		\PackageWarning{missing}{Missing discussion!!!}%
+		\textcolor{red}{MISSING}}
+% low quality image
+\newcommand{\LOWQUALITY}{%
+		\PackageWarning{quality}{Low quality image!!!}}
+
+% TikZ macros
+\newcommand{\mypgfextractangle}[3]{%
+	\pgfmathanglebetweenpoints{%
+		\pgfpointanchor{#2}{center}}{%
+		\pgfpointanchor{#3}{center}}
+	\global\let#1\pgfmathresult
+}

@@ -1,0 +1,186 @@
+%%% The settings file. It contains definitions of basic parameters.
+
+%% Settings for single-side (simplex) printing
+% Margins: left 40mm, right 25mm, top and bottom 25mm
+% (but beware, LaTeX adds 1in implicitly)
+\documentclass[12pt,a4paper,twoside,openright,american]{report}
+%\documentclass[11pt,a4paper,twoside,openright,english]{report}
+
+%%% Settings for single-side (simplex) printing
+%% Margins: left 40mm, right 25mm, top and bottom 25mm
+%% (but beware, LaTeX adds 1in implicitly)
+%\setlength\textwidth{145mm}
+%\setlength\textheight{247mm}
+%\setlength\oddsidemargin{15mm}
+%\setlength\evensidemargin{15mm}
+%\setlength\topmargin{0mm}
+%\setlength\headsep{0mm}
+%\setlength\headheight{0mm}
+%\let\openright=\clearpage % for one sided printing
+
+% Settings for two-sided (duplex) printing
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\setlength\oddsidemargin{14.2mm}
+\setlength\evensidemargin{0mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+% \openright makes the following text appear on a right-hand page
+\let\openright=\cleardoublepage
+
+%%% Parameters of two-sided page
+%%% Size of a4 page is 210 x 297 mm
+%\setlength\hoffset{-25.4mm}  % 25.4 mm + \hoffset = left horizontal margin
+%\setlength\voffset{-25.4mm}  % 25.4 mm + \voffset = top vertical margin
+%\setlength\oddsidemargin{20mm}  % left margin on odd pages
+%\setlength\evensidemargin{20mm}  % left margin on even page => margin from the
+% center is: 
+%% page width - \hoffset - 25.4mm - \textwidth - oddsidemargin
+%
+%%% header
+%\setlength\topmargin{0mm} % margin from top position defined by \voffset
+%\setlength\headsep{10mm} % margin of text from header
+%\setlength\headheight{0mm} % header height
+%
+%%% footer
+%\setlength\footskip{15mm} % margin of bottom border of footer from main text
+%
+%%% side notes
+%\setlength\marginparwidth{5em} % side note width
+%\setlength\marginparsep{5pt} % side note margin from main text
+%
+%%% size of text area
+%\setlength\textwidth{170mm} % width of the text
+%\setlength\textheight{267mm} % height of the text
+
+% \openright next chapter on the right side of the book
+%\let\openright=\cleardoublepage % for double sided printing
+
+%% Generate PDF/A-2u
+\usepackage[a-2u]{pdfx}
+
+\usepackage[utf8]{inputenc}
+
+%% Prefer Latin Modern fonts
+\usepackage{lmodern}  % vector fonts Latin Modern, successor of original
+% Knuth's Computern Modern fonts
+\usepackage[shorthands=off,main=american,greek,czech]{babel}
+% Greek has only 10pt fonts MikTeXu in default. Therefore it is necessary to
+% install cbgreek-complete font package for nice other sizes and not pixelated. 
+% Command initexmf --admin --edit-config-file updmap opens text editor. Add Map
+% cbgreek-full.map to the end and save and run
+% initexmf --admin --verbose --mkmaps.
+% Still doesn't work, some error during font instalation.
+% Workaround, replace original cbgreek.map by the file cbgreek-full.map (i have
+% to rename it) and issue
+% initexmf --admin --verbose --mkmaps
+% initexmf --verbose --mkmaps
+
+\usepackage{cmap} 		% pdf created by `pdflatexem' is fully searchable and
+% copyable
+\usepackage[T1]{fontenc}  % font coding
+\usepackage{csquotes}  % automatic quotes conversion according to language
+
+%\usepackage[nohyperlinks]{acronym} % acronym package for the acronyms and
+% symbol typing
+% nohyperlinks - Don't create hypertext links to the list of acronyms
+
+%\usepackage{pdfpages} % enables inserting whole pdf pages
+% necessary for the inserting of title pages from IS
+
+\usepackage[pdftex]{graphicx}
+%\usepackage{fixltx2e}  % enables \textsubscript
+\usepackage{calc}  % enables mathematical operations in \setlength as - and +
+\usepackage{datetime2}  % enables \currenttiem
+
+\usepackage{float}  % enables new float creation
+
+\usepackage{epsf}
+
+\usepackage[
+    backend=biber,
+		style=iso-authoryear,
+		shortnumeration=true,
+		sortlocale=en_US,
+		uniquelist=false,
+		uniquename=false,
+		autolang=other,
+		bibencoding=UTF8,
+		hyperref=true
+]{biblatex}
+%
+%backref=true
+
+\addbibresource{external/phd_thesis/src/misc/bibliography.bib}
+
+\usepackage[nottoc]{tocbibind}  % makes sure that bibliography and the lists
+			    % of figures/tables are included in the table
+			    % of contents
+\usepackage{amsmath}  %  Better looking eqnarray. Use environment align instead
+% of eqnarray to use bold greek letters
+\usepackage{amsfonts}  % math fonts
+\usepackage{sansmath}  % enables switching to serif fonts also in math env
+\usepackage{bm}  % enables \bm for bold font in math
+
+\usepackage{comment}  % multiline comments
+\usepackage{url}  % hypertext urls in combination with hyperref hyperref
+% \url{http://address} \url{URL}{text}
+\usepackage{multirow}  % vertical merging of cells in tables (
+% \multirow{number of rows}{width}{text}, width can be *. It denotes native
+% line width)
+\usepackage{dcolumn}  % improved alignment of table columns
+\usepackage{tabularx}  % tables with fixed width
+\usepackage{booktabs}  % better looking tables, more space after horizontal
+% rule (use \midrule) and possibility of bold line usage (\toprule and
+% \bottomrule)
+\usepackage{paralist}  % improved enumerate and itemize
+\usepackage{xcolor}  % typesetting in color
+
+\usepackage{microtype}  % switches on microtypography - (protutrusion=true -
+% shift of letter on the edge of the line, expansion=true) - small extension
+% and compression of letters
+\usepackage[
+	font=footnotesize,
+	labelfont={bf,footnotesize}
+]{caption}
+\usepackage{subcaption}  % for subfigures, subtables, ...
+
+%%% tikz
+\usepackage{tikz}  % nice images in LaTeX
+\usetikzlibrary{%
+	arrows.meta,%
+	shapes,%
+	intersections,%
+	decorations.markings,%  arrows
+	decorations.pathmorphing,%  zigzag, snake and other paths
+	calc,%
+	positioning%  left = 1cm and 3cm of SomeNode
+}
+
+\usepackage{chemformula}
+\usepackage{chemfig}
+
+%% The hyperref package for clickable links in PDF and also for storing
+%% metadata to PDF (including the table of contents).
+%% Most settings are pre-set by the pdfx package.
+\hypersetup{colorlinks=false}
+\hypersetup{pdfpagemode=UseOutlines}
+\hypersetup{pdfdisplaydoctitle=true}
+\hypersetup{raiselinks=false}
+\hypersetup{pdfhighlight=/N}
+\hypersetup{pdfborder={0 0 0}}
+\hypersetup{pdflang=en}
+\hypersetup{pdfstartview=}
+\hypersetup{unicode}
+\hypersetup{breaklinks=true}
+\hypersetup{pdfencoding=auto,psdextra}
+
+\usepackage[noabbrev]{cleveref}  % References, must be included after hyperref
+
+\pagestyle{plain}
+%\floatstyle{plain}
+\clubpenalty=100000
+\widowpenalty=100000
+\brokenpenalty100000
+\raggedbottom

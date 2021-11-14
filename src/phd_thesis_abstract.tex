@@ -1,0 +1,32 @@
+%%% The main file. It includes all other parts.
+
+\input{settings/settings}
+
+%
+%--------------------------Beginning of the document--------------------------
+%
+
+\begin{document}
+
+\def\figurename{Figure}
+\def\tablename{Table}
+
+\include{title/title}
+
+
+%%% A page with automatically generated table of contents of the doctoral thesis
+\microtypesetup{protrusion=false}
+\tableofcontents
+\microtypesetup{protrusion=true}
+
+%%% Each chapter is kept in a separate file
+\include{preface/preface}
+\include{introduction/introduction}
+\include{objectives/objectives}
+\include{results_and_discussion/results_and_discussion}
+\include{conclusions/conclusions}
+
+%%% Bibliography and various indices
+\include{misc/misc}
+
+\end{document}

@@ -1,0 +1,3 @@
+[submodule "src/external/phd_thesis"]
+	path = src/external/phd_thesis
+	url = git@github.com:lumik/phd_thesis.git
