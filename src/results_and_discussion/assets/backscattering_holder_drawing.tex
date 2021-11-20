@@ -1,0 +1,86 @@
+\begin{tikzpicture}[scale=1, font=\sffamily, >=Latex]
+
+\definecolor{glassBorderColor}{RGB}{0,128,255}
+\definecolor{glassFillColor}{RGB}{230,242,255}
+
+\tikzset{
+	holder/.style = {color = black, fill = black!20},%
+	holder line/.style = {color = black},%
+	holder hole/.style = {color = black, fill = black!10},%
+	holder clear/.style = {color = black, fill = white},%
+	glass/.style = {color = glassBorderColor, opacity = 0.5,%
+		fill = glassFillColor, fill opacity = 0.5},
+	bar scale/.style = {<->, >=Bar[], line width=1.5*\pgflinewidth},%
+}
+
+% top view
+\draw[holder] (0,3.65)
+	-- ++(0.64,0) coordinate (H11)
+	-- ++(2.29,0) coordinate (H21)
+	-- ++(1.70,0) coordinate (A11)
+	-- ++(0.5,0)
+	-- ++(0,-1.16)
+	-- ++(3.5,0) coordinate (C11)
+	-- ++(1.2,0) coordinate (D11)
+	-- ++(0.1,0) coordinate (E11)
+	-- ++(0,-0.5)
+	-- ++(-0.1,0)
+	-- ++(0,0.2) coordinate (D12)
+	-- ++(-1.2,0) coordinate (C12)
+	-- ++(0,-0.2)
+	-- ++(-4.0,0)
+	-- ++(0,1.02) coordinate (A12)
+	-- ++(-1.7,0)
+	-- ++(-2.29,0)
+	-- ++(-0.64,0)
+	-- cycle;
+\draw[holder hole] ($ (H11) + (-0.24,0) $) -- ++(0.48,0) -- ++(0,-0.32)
+	-- ++(-0.09,0) -- ++(0,-0.32) -- ++(-0.3,0) -- ++(0,0.32) -- ++(-0.09,0)
+	-- cycle;
+\draw[holder hole] ($ (H21) + (-0.24,0) $) -- ++(0.48,0) -- ++(0,-0.32)
+	-- ++(-0.09,0) -- ++(0,-0.32) -- ++(-0.3,0) -- ++(0,0.32) -- ++(-0.09,0)
+	-- cycle;
+\draw[holder line] (A11) -- (A12);
+\draw[holder line] (C11) -- (C12);
+\draw[holder line] (D11) -- (D12);
+
+% right angle prism
+\draw[glass] (E11) rectangle ++(0.5,-0.5);
+
+% side view
+\draw[holder] (0,1.28)
+	-- ++(0.64,0) coordinate (SH11)
+	-- ++(2.29,0) coordinate (SH21)
+	-- ++(1.70,0)
+	-- ++(0,-0.39) coordinate (SA11)
+	-- ++(0.5,0) coordinate (SB11)
+	-- ++(3.5,0)
+	-- ++(0,-0.2) coordinate (SC11)
+	-- ++(1.2,0) coordinate (SD11)
+	-- ++(0,0.2)
+	-- ++(0.1,0) coordinate (SE11)
+	-- ++(0,-0.5)
+	-- ++(-0.1,0)
+	-- ++(0,0.2) coordinate (SD12)
+	-- ++(-1.2,0) coordinate (SC12)
+	-- ++(0,-0.2)
+	-- ++(-3.5,0) coordinate (SB12)
+	-- ++(-0.5,0) coordinate (SA12)
+	-- ++(0,-0.39)
+	-- (0,0) -- cycle;
+\draw[holder hole] ($ (SH11) + (0,-0.64) $) circle (0.48);
+\draw[holder clear] ($ (SH11) + (0,-0.64) $) circle (0.3);
+\draw[holder hole] ($ (SH21) + (0,-0.64) $) circle (0.48);
+\draw[holder clear] ($ (SH21) + (0,-0.64) $) circle (0.3);
+\draw[holder line] (SA11) -- (SA12);
+\draw[holder line] (SB11) -- (SB12);
+\draw[holder line] (SC11) -- (SC12);
+\draw[holder line] (SD11) -- (SD12);
+
+% right angle prism
+\draw[glass] (SE11) rectangle ++(0.5,-0.5);
+
+% bar scale
+\draw[bar scale] (9.3,3.5) -- node[below] {1\,cm} ++(1.0,0);
+
+\end{tikzpicture}

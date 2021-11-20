@@ -1,0 +1,401 @@
+\section{Design of UV Raman experiment}
+
+Work on the construction of a new UV Raman spectrometer was an incremental
+process.
+It was necessary to consider the equipment already present in the lab, mainly
+the laser system, CCD camera, and optical table and specify parameters of the
+chosen commercial spectrograph.
+Then the first functional prototype was constructed and improved for
+measurement of polarized UV Raman spectra.
+The initial wavenumber calibration technique of measured Raman spectra
+was adopted based on the literature.
+Then we started to deal with photo-decomposition of samples by designing a
+spinning cell that could contain as small as cca. 20\,\g{m}l volumes of
+samples.
+After that, we widened the range of usable excitation wavelengths of the
+instrument and decided to seek a new means of wavenumber calibration, and
+after some research and trials and errors, we settled with calibration to the
+spectra of Pt lamp.
+And then, the apparatus was enhanced to enable temperature measurements in
+backscattering geometry.
+
+We used Coherent Innova 300C MotoFreD\texttrademark{} Ion Laser as an
+excitation source with BBO crystals (also from Coherent) designed for doubling
+514, 488, and 457\,nm resulting in 257, 244, and 229\,nm excitation
+wavelengths.
+As a detector, we used liquid nitrogen-cooled Princeton Instruments
+SPEC-10:2KBUV/LN back-illuminated CCD camera enhanced for UV light detection.
+The camera has $2048\times512$ pixels of $13.5\times13.5$\,\g{m}m and can
+be controlled with WinSpec software through ST133B/U camera controller unit.
+As a spectrograph, we decided on Horiba iHR550 Imaging Spectrometer with
+aperture f/6.4, focal length 550 mm, magnification 1.1, and triple-grating
+turret equipped with 300\,gr/mm, 1200\,gr/mm, and 2400\,gr/mm gratings.
+
+\label{wavenumber_calibration}
+For correct Raman spectra interpretation, we needed precise wavenumber
+calibration.
+It can be done by measuring spectrum with known line positions in the same
+spectrometer configuration as for the spectrum of the sample and then
+interpolating and extrapolating the wavenumbers from these known line positions
+to all detector pixels.
+One group of calibration spectra is Raman spectra of organic solvents, but one
+cannot use pure indene, which is widely used in visible Raman because it
+strongly absorbs UV light, and its lines can be shifted if it is diluted.
+So other solvents need to be found.
+
+We tried calibration to cyclohexane because it has a pretty rich Raman
+spectrum.
+We also wanted to solve the problem that most standard organic solvents do not
+have many bands between 1800 and 2800\,\icm{}, so we decided to use deuterated
+cyclohexane-d12, which nicely fills that region.
+To our knowledge, the cyclohexane-d12 was not used for calibration of UV Raman
+spectra of nucleic acids before.
+But, a different method for sub-\icm{} calibration precision
+than calibration to organic solvents needs to be used,
+so we tried to use a mercury lamp which was reported in some works
+\textcite{Manoharan1990},
+but it did not bring any new precision to
+the calibrated spectra, so we searched for the different calibration sources.
+
+Finally, we found out that the best wavenumber scale calibration results are
+obtained with a hollow cathode platinum lamp which broadly used for calibration
+of cosmic space instruments
+\parencite{%
+	Mount1977,%
+	Reader1990,%
+	Sansonetti1992%
+}.
+\emph{Hollow cathode lamps} (HCL) are routinely used in \emph{atomic absorption
+spectroscopy} (AAS), and therefore they are commercially available on the
+market together with power supplies because HCL requires a precision current
+source.
+We used P209 HCL Power Supply (Photron) with P840 Hollow Cathode Lamp -- Pt
+(Photron) which provided a stable platinum atomic spectrum right after start.
+
+We also evaluated crystaline and wire grid polarizers for polarized UV Raman
+measurements and we chose Glan-laser polarizer because it was more reliable
+and had better throughput.
+
+We created a spinning cell to minimize photodecomposition of samples.
+We designed the cell to be also usable with small volumes of the samples, the
+inner radius of 4\,mm and height of 5\,mm.
+It means that the maximal volume could be $\sim250$\,\g{m}L, but due to
+centrifugal force, the smaller amount of samples could be measured;
+for example, 50\,\g{m}L of sample results in an $\sim 4$\g{m}m thick layer
+attached to the cell wall if the cell is rotated sufficiently fast.
+A sample holder was inspired by the work of
+\textcite{Shriver1974},
+but we used FPM o-rings with an inner diameter of 11\,mm and 1\,mm diameter of
+the rubber as displayed in
+\figref{spinning_cell:drawing}
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/spinning_cell_drawing}
+	\caption[%
+		Spinning cell holder.%
+	]{%
+		\captiontitle{%
+			Spinning cell holder.%
+		}
+		A Teflon plug seals the cell (in blue), the knurled nut (light grey)
+		secures the cell to the holder chuck (dark grey) by compressing the o-ring
+		(black).
+		The cell is attached to the driving motor shaft by M2 screws.
+	}
+	\label{\figlabel{spinning_cell:drawing}}
+\end{figure}
+
+As a driving motor, we used a DC motor (Maxon A-max 110119) controlled by a
+homemade power source that could produce from 0\,V to 9\,V at the output.
+The power supply was equipped with a digital voltmeter for user convenience.
+The capabilities of the motor were measured with an attached fully filled cell.
+The values of rotation speed $\omega$ as a function of input voltage $U$ were
+fitted by linear dependence
+\begin{gather*}
+	\omega = a_1U + a_0,\\
+	a_1 = (1071 \pm 4) \text{V}^{-1}, a_0 = 2 \pm 20.
+\end{gather*}
+The dependence has not got any significant constant factor $a_0$, and with the
+maximal power of 9\,V accepted by the motor, about 9600\,rpm was achieved,
+which was satisfactory for the spinning cell to centrifuge the samples to its
+walls completely.
+
+Spinning cell
+showed to be impractical for temperature-controlled experiments.
+A different approach needed to be devised, but it was still necessary to
+minimize the photodecomposition of the samples during measurement.
+We decided that we utilize a magnetic stirrer and traditional spectroscopic
+1\,cm Raman cells.
+We had much experience with recirculating liquid temperature controllers in our
+laboratory, but we decided to design a less expensive temperature-controlled
+cell holder based on a thermoelectric Peltier device.
+
+The new cell holder consisted of a copper block surrounding the cell
+(\figref{thermostated_holder:core_drawing})
+with a front hole suitable for backscattering measurements.
+There were also two hollows at the top of the block for convenient removal of
+the cells.
+We also designed an adapter for 5\,mm cells.
+The block contained thermocouple Pt100 for measurement of temperature sealed by
+thermal grease to ensure good heat transfer.
+
+The copper block was placed inside a Teflon block which served as insulation
+(\figref{thermostated_holder:insulation_drawing}).
+The insulation layer also contained a magnetic stirrer (Variomag).
+The stirrer could be used up to 95\,\textcelsius{}, stir volumes up to 5\,mL on
+130 -- 1000\,rpm, and was controlled by an external controller.
+The sample cell could be covered inside the holder by a Teflon cover
+(\figref{thermostated_holder:stand_drawing}).
+
+% inserting more pdf figures created by Inkscape on one page produces warning
+% about multiple pdfs with page group
+% I found suggestion for solution here for using qpdf for that but did not try
+% to apply it:
+% https://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
+\begin{figure}
+	\centering
+	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/core}
+	\caption[%
+		Thermostated cell holder copper core.%
+	]{%
+		\captiontitle{%
+			Thermostated cell holder copper core.%
+		}
+	}
+	\label{\figlabel{thermostated_holder:core_drawing}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/insulation}
+	\caption[%
+		Teflon insulation of thermostated cell holder.%
+	]{%
+		\captiontitle{%
+			Teflon insulation of thermostated cell holder.%
+		}
+	}
+	\label{\figlabel{thermostated_holder:insulation_drawing}}
+\end{figure}
+
+The temperature was maintained by two thermoelectric Peltier modules
+(TEC1-12710) chained in series for better performance, where the second module
+could be replaced by a copper shim if the performance of one is satisfactory.
+The operation of the Peltier modules was controlled by a two-channel PID
+controller (Eurotherm 3216) connected to the thermocouple placed inside the
+copper block as described above.
+The signals of the two channels (heating and cooling) of the PID controller
+were converted to a bipolar signal by constructed H bridge so the direction
+and intensity of heat transfer through the Peltier modules could be controlled.
+
+An aluminum profile heat sink
+(\figref{thermostated_holder:heat_sink_drawing})
+with two ventilators (Sukon, 2500\,rpm, 17\,W) was attached to the
+thermoelectric modules to increase efficiency.
+The aluminum profile was insulated from the copper core block by the Teflon
+layer.
+A universal aluminum right-angle adapter
+(\figref{thermostated_holder:stand_drawing})
+mounted the whole sample holder through the heat sink to a three-axis manual
+stage (Thorlabs).
+The adapter supported securing of different sample holders in various
+positions. Overall 3D image of the holder can be seen in
+\figref{thermostated_holder:3d}.
+
+\begin{figure}
+	\centering
+	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/stand}
+	\caption[%
+		Teflon cover of sample cell and universal aluminum right-angle
+		adapter for thermostated sample holder.%
+	]{%
+		\captiontitle{%
+			Teflon cover of sample cell (on the right) and universal aluminum
+			right-angle adapter for thermostated sample holder (on the right).%
+		}
+	}
+	\label{\figlabel{thermostated_holder:stand_drawing}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/heat_sink}
+	\caption[%
+		Aluminum profile heat sink for the thermostated cell holder.%
+	]{%
+		\captiontitle{%
+			Aluminum profile heat sink for the thermostated cell holder.%
+		}
+	}
+	\label{\figlabel{thermostated_holder:heat_sink_drawing}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\LOWQUALITY
+	\includegraphics[width=.49\columnwidth]%
+			{results_and_discussion/assets/thermostated_holder_drawing/3D01}
+	\LOWQUALITY
+	\includegraphics[width=.49\columnwidth]%
+		{results_and_discussion/assets/thermostated_holder_drawing/3D02}
+	\caption[%
+		The 3D image of thermostated sample holder without thermoelectric
+		Peltier modules, thermocouple, and stirrer.%
+	]{%
+		\captiontitle{%
+			The 3D image of thermostated sample holder without thermoelectric
+			Peltier modules, thermocouple, and stirrer.%
+		}
+	}
+	\label{\figlabel{thermostated_holder:3d}}
+\end{figure}
+
+This design of thermostated sample holder enabled fast control of the
+temperature in the range between 5 and 95\,\textcelsius{} of samples with
+volumes in the range between 250 (with the adapter to 0.5\,mm sample cells) and
+3000\,\g{m}L.
+The heating from 5 to 95\,\textcelsius{} took $\sim$15\,min and cooling from 95
+to 5\,\textcelsius{} was as fast as 25\,min.
+
+The air conditioning also kept low humidity inside the laboratory, but for
+temperatures less then 15\,\textcelsius{} the continuous flow of dry air or
+nitrogen was directed to the front surface of the sample cell.
+
+The laser beam, which had horizontal polarization, was guided in a loop using
+right angle prisms to maintain the right polarization direction.
+Pellin-Broca prism (PB) separated the excitation beam from unwanted light
+(for example, from fundamental laser lines).
+The unwanted light was guided to a beam blocker (BB).
+
+\emph{M3} and hit the bottom of the sample cell, having polarization
+perpendicular to the direction of scattered signal acquisition.
+The excitation beam was focused onto the sample by the plano-convex lens
+\emph{L1} with a focal length of 100\,mm.
+It was calculated that shorter focal lengths would be more optimal for the
+apparatus but due to steric restrictions the longer focal length was
+chosen because the most practical place for the lens was between M2 and M3.
+The excitation laser beam could be attenuated by
+the neutral density filters \emph{ND} with a selection of 0.5, 1, 2, 3, and 4
+optical densities (Thorlabs), which were placed inside the carousel (Thorlabs)
+for easy switching.
+We also used an old single-blade shutter that we found in our laboratory.
+The shutter was controlled from the CCD port for external shutter by the
+WinSpec software provided with the detector.
+The shutter was open during measurement and closed the rest of the time
+to prevent photodecomposition of samples by the UV laser beam.
+
+We needed to visualize the beam for proper laser beam path setup because the
+wavelengths in use are outside of the visible light range.
+Business cards showed to be the best equipment for beam visualization because
+the paper used for them usually has strong fluorescence.
+Excitation beam adjustment procedure uses two apertures \emph{A1}, \emph{A2}
+and crosshair reticle printed on the paper fixed to the ceiling of the room.
+At first, the kinematic holder of mirror M1 is adjusted, so the beam passes
+through aperture A1.
+If the beam is blocked by some of the other optical elements on its way to the
+ceiling reticle, we can use a business card to detect if it passes through the
+center of the aperture A1.
+Then the mirror M2 is adjusted so that the beam passes through A2, and finally,
+the mirror M3 is adjusted to hit the center of the reticle.
+The procedure can be iteratively repeated if the result is not satisfactory but
+the good alignment was usually achieved after the first iteration.
+
+Raman scattered light is no longer monochromatic, so we decided to use
+reflective optics in the light gathering part of the apparatus to avoid
+chromatic aberration.
+We selected Cassegrain objective \emph{O} (Newport) with $f_o = 13$\,mm
+effective front focal length, back focal length in infinity, 0.4 numerical
+aperture, and 9.72\,mm diameter of the output beam.
+The elastically scattered light is removed by edge filters \emph{EF} (Semrock).
+The rest of the collimated signal is then guided by UV enhanced broadband
+aluminum mirror \emph{MS1} (Newport) to focusing off-axis parabolic mirror
+\emph{MS2} (Newport) with $f_c = 101.6$\,mm effective focal length to the
+spectrograph slit.
+The spectrograph has f/6.4 aperture, whereas the focusing lens with the
+beam diameter determined by objective has aperture $101.6 / 9.72 = f/10.5$,
+which means that we slightly underfill the spectrometer's angle of acceptance.
+
+Highly absorbing samples can be hard to measure in right-angle geometry
+because of absorption of excitation light and selfabsorption of the scattered
+light \parencite{Shriver1974}.
+These problems can be solved by using backscattering geometry.
+So we decided to improve the apparatus with an easily switchable
+backscattering modality.
+
+We utilized the fact that the Cassegrain objective has a blind spot in
+collimation mirror area and placed there a small $0.5 \times 0.5$ right-angle
+prism (M4) glued to a homemade holder attached to kinematic stand.
+The Cassegrain objective was placed on a long travel manual transition stage so
+it could be moved to the position for backscattering, where the laser beam
+going up was almost touching the front side of the Cassegrain.
+The prism M4 reflected the beam in the optical axis of the Cassegrain into the
+sample, see
+\figref{backscattering:apparatus_schema}.
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/backscattering_schema}
+	\caption[%
+		Top-view schema of the apparatus in backscattering configuration
+		and with side-view inset of the sample space.%
+	]{%
+		\captiontitle{%
+			Top-view schema of the apparatus in backscattering configuration
+			and with side-view inset of the sample space.%
+		}
+		A laser beam is emitted with horizontal polarization.
+		It is guided through
+			a carousel with neutral density (ND) filters,
+			shutter,
+			Pellin-Broca prism PB, which separates unwanted frequencies from the
+				excitation beam and sends them to the beam blocker BB,
+			Right angle prisms in total reflection configuration replaced M2 -- M4,
+			and laser focusing lens (L1)
+			to the sample cell (S)
+			through apertures A1 and A2.
+		The scattered light is
+			gathered by Cassegrain objective (O),
+			reflected by the mirror MS1
+			and focused on the entrance slit of spectrograph by parabolic mirror MS2.
+			Edge filter (EF) suppresses elastically scattered light.
+		The calibration beam from Pt \emph{hollow cathode lamp} (HCL)
+			is collimated by calibration beam lens LC1
+			and guided by the calibration right-angle prisms (MC1 and MC2) in total
+				internal reflection mode
+			and focused on the entrance slit of spectrograph by the parabolic mirror
+				MS2 the same way as the scattered signal from samples.
+		The calibration lamp signal can be attenuated by modifying the size of the
+			calibration beam aperture AC1.
+		The mirror MC2 was placed on a motorized flip mount to enable easy
+			insertion for calibration spectra measurement.
+		The prism MC2 is flipped to the position for measurement, and the
+			calibration lamp is switched off.
+	}
+	\label{\figlabel{backscattering:apparatus_schema}}
+\end{figure}
+
+The holder for prism M4 is displayed in
+\figref{backscattering_holder:drawing}.
+It was designed so that if it is secured to the kinematic holder, the axis of
+the prism is the same as the axis of the kinematic holder.
+The width of the thin part of the holder at the end is the same as the width of
+the ribs, which are holding the collimating mirror of the Cassegrain so that
+they can be aligned and no scattered light is blocked by the holder.
+
+For the right-angle geometry, the M4 was simply removed, and Cassegrain was
+moved backward to focus inside the excitation laser light going up.
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/backscattering_holder_drawing}
+	\caption[%
+		Backscattering holder.%
+	]{%
+		\captiontitle{%
+			Backscattering holder.%
+		}
+		The top view is on top; a side view is on the bottom.
+	}
+	\label{\figlabel{backscattering_holder:drawing}}
+\end{figure}

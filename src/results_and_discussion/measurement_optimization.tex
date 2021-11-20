@@ -1,0 +1,266 @@
+\section{Optimization of the experiment}
+
+Optimal measurement conditions are one of the requirements for high-quality
+scientific results.
+Many adjustable parameters can influence the measurement quality, and their
+optimal values highly depend on the samples under investigation.
+The further analysis focuses on optimizing measurement parameters of nucleic
+acids using 244 and 257\,nm excitation wavelengths.
+PolyU was chosen as the sample for these experiments because uracil is known to
+be the most susceptible base for photodecomposition, and our further
+experiments were conducted on oligo and polynucleotides, and thus polyU is a
+better model molecule than, for example, mononucleotide UMP.
+The main parameters which needed to be determined were excitation laser power,
+length of accumulation, sample volume, and concentration.
+Moreover, the optimal sample rotation speed needed to be found for the
+experiments using the spinning cell.
+
+Quality of Raman measurement in dependence on excitation laser power length,
+sample concentration, sample volume and rotation speed was quantified by means
+of sample lifetimes.
+The analysis was performed on the polyU integral intensity represented by
+its band at 1231\,\icm{} compared to the intensity of the cacodylate band at
+607\,\icm{} to account for the excitation laser power and sample adjustment
+variations during the measurement.
+The intensity was estimated both from raw spectra and spectra with subtracted
+background.
+
+\Figref{power_optim:triplexes_pU}
+clearly shows that the polyU band in raw spectrum also contains a shoulder at
+1248\,\icm{}, and is overlapping with the cacodylate band at 1276\,\icm.
+Therefore, the band was modeled by the shape function
+(\eqnref{band_intensities:shape})
+with three components, but its intensity was calculated as a sum of the pulyU
+bands without the cacodylate one.
+The cacodylate band was modeled as having two components, at 607 and 640\,\icm,
+but only the first one was used for the integral intensity calculation.
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/power_optimization_triplexes/%
+		power_optimization_triplexes_pU}
+	\caption[%
+		Example UV RR spectrum of polyU dissolved in cacodylate buffer.%
+	]{%
+		\captiontitle{%
+			Example UV RR spectrum of polyU dissolved in cacodylate buffer.%
+		}
+		The fits of shape functions
+		(\eqnref{band_intensities:shape})
+		to the bands of polyU and cacodylate used in intensity estimation fit are
+		marked by green, and red lines, respectively, and the areas used for
+		intensity calculation are filled with the corresponding colors.
+	}
+	\label{\figlabel{power_optim:triplexes_pU}}
+\end{figure}
+
+The time dependence of the intensity of polyU band at 1231\,\icm{} (normalized
+to the intensity of cacodylate band at 607\,\icm) was modeled by the
+exponential decay curve
+\begin{equation}
+	I = I_0 \text{e}^{-\lambda t} + b,
+	\label{\eqnlabel{power_optim:decay}}
+\end{equation}
+where $I_0$ is initial intensity, $\lambda$ is the decay constant, and $b$ is
+the baseline constant.
+The normalized results (subtracted by $b$) can be seen in
+\figref{power_optim:triplexes}.
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/power_optimization_triplexes/%
+		power_optimization_triplexes}
+	\caption[%
+		Decrease of the integral intensity of polyU band at 1231\,\icm{} for
+		different excitation laser powers in raw spectra.%
+	]{%
+		\captiontitle{%
+			Decrease of the integral intensity of polyU band at 1231\,\icm{} for
+			different excitation laser powers in raw spectra.%
+		}
+		It was normalized to the integral intensity of the cacodylate band at
+		607\,\icm{}, which was used as the internal intensity standard.
+		The values were fitted by exponential decay curves
+		\eqnref{power_optim:decay}
+		and the baseline constant $b$ from the fit was subtracted from the plots.
+	}
+	\label{\figlabel{power_optim:triplexes}}
+\end{figure}
+
+The lifetimes $\tau$ can be calculated from decay constants $\lambda$ from
+\eqnref{power_optim:decay}
+\begin{equation}
+	\tau = \frac{1}{\lambda}.
+	\label{\eqnlabel{power_optim:lifetime}}
+\end{equation}
+We can also calculate total accumulated relative energy from the decay curve
+by
+\begin{equation*}
+	E_{0,\text{r}}
+		= \int_0^{\infty}{I_0 \text{e}^{-\lambda t}\text{d}t}
+		= \frac{I_0}{\lambda}
+\end{equation*}
+and energy accumulated from time $T_0$ by
+\begin{equation*}
+	E_r	= \int_{T_0}^{\infty}{I_0 \text{e}^{-\lambda t}\text{d}t}
+		= \frac{I_0}{\lambda} \text{e}^{-\lambda T_0}.
+\end{equation*}
+Energy fractions can then be calculated by dividing the relative energies by
+the maximal total relative energy. The resulting lifetimes, total accumulated
+energy fractions $E_0$, and energy fractions $E$ accumulated from time
+$T = 60\pm20$\,s, which was regarded as reasonable approximate for the time
+needed for adjustment of the sample before measurement could start.
+
+Further investigation of the spectral decay behavior shows that this simple
+approach does not reveal that a single decay curve cannot model such a complex
+system.
+This effect is clearly visible if we subtract the cacodylate buffer background
+from the spectra.
+The resulting spectrum can be seen in
+\figref{power_optim:triplexes2_pU}.
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/power_optimization_triplexes2/%
+		power_optimization_triplexes2_pU}
+	\caption[%
+		Example UV RR spectrum of polyU dissolved in cacodylate buffer with
+	  the cacodylate buffer background subtracted.%
+	]{%
+		\captiontitle{%
+			Example UV RR spectrum of polyU dissolved in cacodylate buffer with
+			the cacodylate buffer background subtracted.%
+		}
+		The fit of shape function
+		(\eqnref{band_intensities:shape})
+		to the band of polyU used in intensity estimation fit is marked by a green
+		line together with the area used for the intensity calculation.
+	}
+	\label{\figlabel{power_optim:triplexes2_pU}}
+\end{figure}
+
+The polyU band at 1230\,\icm{} can then be modeled directly without the
+interference of the cacodylate band at 1276\,\icm{}.
+It can be seen from the polyU band intensity dependence plot in
+\figref{power_optim:triplexes2}
+that the background subtraction process slightly obscures the intensity
+normalization so that the fast decay curves cannot be modeled here.
+However, we can also see a slower decay trend which is not evident from the fit
+to the intensities of the polyU band calculated from the spectra without
+subtracted background.
+This is caused by the fact that it is harder to reliably decouple
+the contribution of the overlapping polyU and cacodylate bands with the
+lowering polyU band intensity.
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/power_optimization_triplexes2/%
+		power_optimization_triplexes2}
+	\caption[%
+		Decrease of the integral intensity of the polyU band at 1231\,\icm{}
+		for different excitation powers in background-corrected spectra.%
+	]{%
+		\captiontitle{%
+			Decrease of the integral intensity of the polyU band at 1231\,\icm{}
+			for different excitation powers in background-corrected spectra.%
+		}
+		The intensity was normalized to the subtracted spectrum of cacodylate
+		buffer, which was used as the internal intensity standard.
+		The values were fitted by exponential decay curves
+		\eqnref{power_optim:decay}.
+		The baseline constant $b$ from the fit was subtracted from the plots.
+	}
+	\label{\figlabel{power_optim:triplexes2}}
+\end{figure}
+
+We can see that the system is complex, and our current methods cannot correctly
+analyze the underlying processes.
+Photoproducts can influence the resulting spectra, and therefore we
+decided to use relatively lower excitation powers like 1\,mW or 0.5\,mW even
+though the higher excitation power could probably give higher quality spectra.
+
+Next conclusion was that the lifetime seemed to depend almost linearly on
+the concentration, proportional to the number of nucleotides in the sample.
+This means that in our experimental configuration, all the
+excitation laser energy is absorbed in the sample for investigated, and
+the number of photodecomposed molecules is proportional to the absorbed
+energy in this concentration range.
+Only in the samples with extremely low concentrations, all laser power is not
+absorbed, and therefore the lifetime is longer.
+
+It also implies that the excitation laser power density does not significantly
+influence the photodecomposition process in the used range of the laser powers.
+
+This analysis means that samples can endure longer measurements on higher
+concentrations.
+On the other hand, higher concentrations are also less cost-effective because
+they require larger amounts of samples and it is harder to adjust focus for
+them.
+The spectra are also more influenced by the signal of the sample cell
+because the laser beam needs to be focused closer to the cell wall and floor.
+1000\,\g{m}M concentration was the highest practical value; higher
+concentrations had excessive absorbance and were hard to set up for the
+measurement.
+It can also be beneficial for some measurements to measure samples with the
+same concentration as in UV absorption measurements so that these two can
+complement each other under the same measurement conditions.
+Therefore the lower concentrations than 1\,mM were usually chosen in this
+study.
+
+The results of sample volume optimization supported the hypothesis that the
+sample photodecomposition is inversely proportional to the number of
+illuminated molecules with sufficient stirring.
+We, therefore, tried to use fully-filled cuvettes by samples (3\,mL in the case
+of the thermostated sample cell and 150\,\g{m}L for the spinning cell).
+
+Also, a fast rotation seemed better than the slower rotation with a
+stronger signal and no impact on the sample lifetime.
+Therefore we decided to use the maximal rotation speed in all the experiments
+which used the spinning sample cell.
+
+Lastly, also length of accumulation was optimized.
+A Raman spectrum is usually acquired as a consecutive series of spectra,
+further called \emph{frames}, taken at the same experimental conditions and
+with the constant accumulation time.
+We decided to assess the SNR to estimate the quality of the measured spectra.
+It was found that longer single-frame accumulation times give better quality
+spectra in these experimental conditions.
+The difference is larger in the low-frequency SNR even though the
+high-frequency SNR difference is also significant.
+Regarding the disadvantages of the
+longer accumulation discussed in the thesis and the speed of
+the sample degradation with lifetimes in the range of minutes, we decided that
+the optimal accumulation time is 60\,s.
+
+The spinning cell can be used not only for measurements in the right-angle
+geometry, but also for measurements in the backscattering configuration.
+We observed two sharp lines at 1555 and 2329\,\icm{} in these measurements
+when very small sample volumes were used.
+It can be seen, for example, in the spectrum of the samples extracted from alga
+amphidinium in
+\figref{artefact:artefact_amphidinium}.
+50\,\g{m}l of sample was measured in the spinning cell in backscattering
+geometry with 10\,mW of 257\,nm excitation laser.
+
+\begin{figure}
+	\centering
+	\input{results_and_discussion/assets/artefact/%
+		artefact_amphidinium}
+	\caption[%
+		Spectrum of extract from alga amphidinium in the spinning cell in
+		backscattering geometry with 257\,nm excitation laser.%
+	]{%
+		\captiontitle{%
+			Spectrum of extract from alga amphidinium in the spinning cell in
+			backscattering geometry with 257\,nm excitation laser.%
+		}
+	}
+	\label{\figlabel{artefact:artefact_amphidinium}}
+\end{figure}
+
+Further investigation and searching through the databases and atlases of
+Raman spectra identified the cause of the spectra as molecules of gas \ch{O2}
+at 1556\,\icm{} and \ch{N2} at 2330\,\icm{}.
+It means that the signal is also gathered from the central cylinder of the air
+inside the spinning cell resulting in the contribution of gas \ch{O2} and
+\ch{N2} in the spectra.

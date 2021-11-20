@@ -1,0 +1,72 @@
+\section{Automation of Raman experiment}
+
+Investigation of the temperature dependence of Raman spectra is an important
+technique for studying nucleic acids
+\parencite{Klener2021}.
+However, high-quality results for multivariate analysis can demand high numbers
+of spectra
+\parencite{Palacky2020}.
+Obtaining large sets of temperature-dependent spectra would be nearly
+impossible without appropriate automation.
+Automation also reduces space for human errors and improves precision in
+timing.
+
+Our laboratory is equipped with a homemade Raman spectrometer with visible
+laser excitation suitable for precise temperature-dependent measurements.
+The spectrometer uses 90\textdegree{} scattering geometry, Jobin-Yvon Spex 270M
+monochromator, and a liquid nitrogen-cooled CCD detector from Princeton
+Instruments.
+The precise wavenumber calibration utilizes a neon glow lamp, and the
+calibration spectrum is taken after each spectrum to compensate for all
+time-based drift in the apparatus.
+This approach allows for calibration of the wavenumber scale with precision in
+the range of 0.1\,\icm{}.
+
+The temperature of the samples is controlled by a water bath (Neslab).
+The original
+temperature-dependent Raman measurement with this setup meant that the
+scientist needed to manually change temperature and switch between calibration
+and sample measurement modes which required almost continuous presence
+in the laboratory.
+
+Some experiments performed during this work took advantage of complementary
+measurements of the temperature dependence of visible and UV Raman spectra
+\parencite{Klener2021},
+and therefore it was decided to automate the measurements with varying
+temperatures on the visible Raman spectrometer.
+This automation, carried out within the framework of the dissertation, also
+enabled other scientific works in our laboratory
+\parencite{%
+	Mudronova2016,%
+	Bravo2018,%
+	Palacky2020%
+}.
+
+The newly created experiment automation program \emph{SpExpert} can control the
+CCD detector, spectrograph, switch between calibration and sample measurement
+position, switch of calibration, lamp and temperature of the thermostated
+water bath.
+The whole SpExpert program is written in C++ using Qt framework
+\parencite{Qt}
+and is available for download online
+\parencite{SpExpert2018}.
+It focuses mainly on temperature-based Raman measurements with the possibility
+to use extended-range mode which, means that it is possible to measure with
+more positions of spectrograph grating for each temperature.
+Temperature evolution with time can be reviewed during measurement right
+from the program screen, see
+\figref{spex_automation:temperature_measurement}.
+
+\begin{figure}
+	\centering
+	\ig{0.7}{results_and_discussion/assets/spex_automation/%
+		spexpert_running_temperature2.jpg}
+	\caption[%
+			SpExpert program during temperature-dependent measurement.
+	]{%
+		\captiontitle{%
+			SpExpert program during temperature-dependent measurement.
+		}%
+		The live view of temperature can be seen.}
+	\label{\figlabel{spex_automation:temperature_measurement}}
+\end{figure}

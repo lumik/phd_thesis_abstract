@@ -1,0 +1,119 @@
+\section{Development of data processing methods}
+\label{data_processing}
+
+High-quality spectra are needed for advanced multivariate statistic methods
+used for the measurement analysis.
+It is essential to have sufficiently sensitive apparatus which can provide a
+reliable signal.
+However, raw Raman spectra, which come from the measurement, usually contain
+many components, and only one of them belongs to the analyte signal.
+The following sections describe the process of transforming the raw spectrum
+to the spectrum ready for the advanced result analysis, analysis
+of spectra of multicomponent system, minimization algorithm used for the
+data analysis, and band intensity estimation overview.
+
+Among the major artifacts observed in Raman spectra is signal caused by cosmic
+rays, which is characteristic by sharp lines usually impacting only a few
+pixels of the CCD detector.
+\emph{Spycor} program
+\parencite{Spycor2018},
+was created as part of this thesis and is based on a comparison of consecutive
+spectra where it counts on the fact that during macroscopic Raman measurement,
+the spectra change only slowly with time and that the consecutive spectra are
+similar.
+
+Raman spectra of liquid samples usually consist of many components, including
+the signal of the analyte under investigation and the spectrum of the solvent.
+In the case of absorbing analyte, the spectrum
+is acquired from the near proximity of the sample cell wall, and so it
+usually contains a signal of quartz.
+The resulting spectrum can also contain unspecific background from different
+sources like fluorescence from residuals from chemical synthesis and elastic
+scattering of light from different light sources in the laboratory.
+
+Therefore the background subtraction procedure took several steps.
+Each spectrum was acquired as a series of frames, and all frames were stored
+for further analysis.
+The spectrum of solvent, buffer, and sample cell together with the intensity
+normalization to the subtracted buffer signal was performed on each frame in
+the first step using the \emph{Bgcor} program
+\parencite{Bgcor2017}
+(written in \cite{Matlab}),
+developed as part of this thesis. The unspecific background was then removed
+from each spectrum using background subtraction in frames decomposed to
+spectral components by PCA
+\parencite{Palacky2011}.
+The thirds step consisted of extrapolation to zero time, where PCA decomposed
+the frames to spectral components, and the spectrum at zero time
+was reconstructed from significant ones.
+The last optional step performed only when a series of spectra was
+taken, for example, temperature-dependent measurement was to subtract the
+background once more using PCA the same way as in step two but currently
+applied to the whole series of the extrapolated spectra from the third step.
+This section focuses mainly on the first step -- the subtraction of the
+solvent, buffer, and sample cell, together with the intensity normalization.
+
+Further, we adopted in this thesis \emph{Principal component analysis} (PCA,
+\cite{%
+	Wold1987,%
+	Malinowski2002%
+}),
+which reduces the measured spectra to several spectral profiles (loadings) and
+scores indicating each profile's portion in the measured spectra.
+The scores can then be fitted by a function based on an underlying chemical
+model, and for example, thermodynamic parameters for structural transitions
+can be estimated in temperature-dependent measurement
+\parencite{Nemecek2013}.
+But the fit is usually not linear in the system parameters.
+Nonlinear minimization is usually much more expensive because it utilizes
+iterative methods of searching for the minimum.
+They are also susceptible to finding only local minima.
+On the other hand, linear least squares regression is “just” solution of a set
+of normal equations
+\parencite[p.~671]{NumericalRecipes}.
+It means that the nonlinear iterative minimization algorithm can be applied
+to $b_{k,m}$ values, the $a_{k,l_k}$ values are estimated by linear least
+squares for the given $c_k(t_i)$ which are determined by the values of
+$b_{k,m}$.
+We made use of this fact and divided the fit to two parts where linear
+parameters were estimated by linear fit in each step of iterative nonliner
+fit which minimized only the nonlinear parameters.
+This approach significantly reduced dimension of the nonlinear fit and
+improved its numerical stability.
+
+In this thesis, many data treatment approaches needed efficient nonlinear
+minimization algorithm (background subtraction, estimation of band intensities,
+estimation of parameters of chemical model from spectral series).
+The Levenberg-Marquardt method
+\parencite{Marquardt1963}
+was used as a basis for the minimization algorithm used in this thesis, and
+slight modifications were applied to improve its performance.
+
+\label{band_intensities}
+
+One of the important spectroscopic information is the integral intensity of
+particular Raman bands from the spectrum.
+The band's shape is usually modeled by Gaussian or Lorentzian curves or as
+their combination.
+The combination of the Lorentzian $\func{L}$ and Gaussian $\func{G}$ curve can
+be expressed as
+\begin{equation}
+	\func{S}(\wn; I_\text{m}, \mu, \sigma) =
+		c_\text{L} \cdot \func{L}(\wn; I_\text{m}, \mu, \sigma)
+		+ (1 - c_\text{L}) \cdot \func{G}(\wn; I_\text{m}, \mu, \sigma),
+	\label{\eqnlabel{band_intensities:single_shape}}
+\end{equation}
+where $c_\text{L}$ is the Lorentzian curve fraction coefficient, $I_m$ is the
+height, $\mu$ is the band position, $\sigma$ is the Gaussian root mean square
+width, and $\wn$ is the wavenumber.
+
+Raman bands in a typical Raman spectrum of complex samples are overlapped.
+We solved this problem by modeling the band as a combination of more
+band-shape functions from
+\eqnref{band_intensities:single_shape}
+\begin{equation}
+	\func{S}(\wn; I_{\text{m},1..n}, \mu_{1..n}, \sigma_{1..n}) =
+		\sum_{i = 1}^n = 	\func{S}_i(\wn; I_{\text{m},i}, \mu_i, \sigma_i),
+	\label{\eqnlabel{band_intensities:shape}}
+\end{equation}
+where $n$ is the number of the overlapping bands.
