@@ -41,5 +41,9 @@ src/results_and_discussion/assets/power_optimization_triplexes2/power_optimizati
 src/results_and_discussion/assets/power_optimization_triplexes2/power_optimization_triplexes2.tex
 src/results_and_discussion/assets/power_optimization_triplexes2/power_optimization_triplexes2_pU.pdf
 src/results_and_discussion/assets/power_optimization_triplexes2/power_optimization_triplexes2_pU.tex
+src/results_and_discussion/assets/rna_triplex/rna_triplex_spectra.tex
+src/results_and_discussion/assets/rna_triplex/rna_triplex_spectra.pdf
+src/results_and_discussion/assets/tel22/tel22_spectra.tex
+src/results_and_discussion/assets/tel22/tel22_spectra.pdf
 *.bak
 *.sav

@@ -56,6 +56,10 @@ def process_plots():
 			'power_optimization_triplexes2_pU.gp', False, ['power_optimization_triplexes2_pU.pdf']],
 		['results_and_discussion/assets/power_optimization_triplexes2/',
 			'power_optimization_triplexes2.gp', True, ['power_optimization_triplexes2.eps']],
+		['results_and_discussion/assets/rna_triplex/',
+			'rna_triplex_spectra.gp', True, ['rna_triplex_spectra.eps']],
+		['results_and_discussion/assets/tel22/',
+			'tel22_spectra.gp', True, ['tel22_spectra.eps']],
 	]
 
 	root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
