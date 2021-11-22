@@ -43,19 +43,14 @@ cannot use pure indene, which is widely used in visible Raman because it
 strongly absorbs UV light, and its lines can be shifted if it is diluted.
 So other solvents need to be found.
 
-We tried calibration to cyclohexane because it has a pretty rich Raman
-spectrum.
-We also wanted to solve the problem that most standard organic solvents do not
-have many bands between 1800 and 2800\,\icm{}, so we decided to use deuterated
-cyclohexane-d12, which nicely fills that region.
-To our knowledge, the cyclohexane-d12 was not used for calibration of UV Raman
+We tried calibration to cyclohexane and deuterated cyclohexane-d12, which
+nicely fills the region between 1800 and 2800\,\icm{}.
+To our knowledge, cyclohexane-d12 was not used for calibration of UV Raman
 spectra of nucleic acids before.
-But, a different method for sub-\icm{} calibration precision
-than calibration to organic solvents needs to be used,
-so we tried to use a mercury lamp which was reported in some works
+A different method needs to be used for sub-\icm{} calibration precision.
+We tried to use a mercury lamp which was reported in some works
 \textcite{Manoharan1990},
-but it did not bring any new precision to
-the calibrated spectra, so we searched for the different calibration sources.
+but it did not bring any new precision.
 
 Finally, we found out that the best wavenumber scale calibration results are
 obtained with a hollow cathode platinum lamp which broadly used for calibration
@@ -69,8 +64,6 @@ of cosmic space instruments
 spectroscopy} (AAS), and therefore they are commercially available on the
 market together with power supplies because HCL requires a precision current
 source.
-We used P209 HCL Power Supply (Photron) with P840 Hollow Cathode Lamp -- Pt
-(Photron) which provided a stable platinum atomic spectrum right after start.
 
 We also evaluated crystaline and wire grid polarizers for polarized UV Raman
 measurements and we chose Glan-laser polarizer because it was more reliable
@@ -109,17 +102,6 @@ the rubber as displayed in
 As a driving motor, we used a DC motor (Maxon A-max 110119) controlled by a
 homemade power source that could produce from 0\,V to 9\,V at the output.
 The power supply was equipped with a digital voltmeter for user convenience.
-The capabilities of the motor were measured with an attached fully filled cell.
-The values of rotation speed $\omega$ as a function of input voltage $U$ were
-fitted by linear dependence
-\begin{gather*}
-	\omega = a_1U + a_0,\\
-	a_1 = (1071 \pm 4) \text{V}^{-1}, a_0 = 2 \pm 20.
-\end{gather*}
-The dependence has not got any significant constant factor $a_0$, and with the
-maximal power of 9\,V accepted by the motor, about 9600\,rpm was achieved,
-which was satisfactory for the spinning cell to centrifuge the samples to its
-walls completely.
 
 Spinning cell
 showed to be impractical for temperature-controlled experiments.
@@ -132,7 +114,6 @@ laboratory, but we decided to design a less expensive temperature-controlled
 cell holder based on a thermoelectric Peltier device.
 
 The new cell holder consisted of a copper block surrounding the cell
-(\figref{thermostated_holder:core_drawing})
 with a front hole suitable for backscattering measurements.
 There were also two hollows at the top of the block for convenient removal of
 the cells.
@@ -140,44 +121,11 @@ We also designed an adapter for 5\,mm cells.
 The block contained thermocouple Pt100 for measurement of temperature sealed by
 thermal grease to ensure good heat transfer.
 
-The copper block was placed inside a Teflon block which served as insulation
-(\figref{thermostated_holder:insulation_drawing}).
+The copper block was placed inside a Teflon block which served as insulation.
 The insulation layer also contained a magnetic stirrer (Variomag).
 The stirrer could be used up to 95\,\textcelsius{}, stir volumes up to 5\,mL on
 130 -- 1000\,rpm, and was controlled by an external controller.
-The sample cell could be covered inside the holder by a Teflon cover
-(\figref{thermostated_holder:stand_drawing}).
-
-% inserting more pdf figures created by Inkscape on one page produces warning
-% about multiple pdfs with page group
-% I found suggestion for solution here for using qpdf for that but did not try
-% to apply it:
-% https://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
-\begin{figure}
-	\centering
-	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/core}
-	\caption[%
-		Thermostated cell holder copper core.%
-	]{%
-		\captiontitle{%
-			Thermostated cell holder copper core.%
-		}
-	}
-	\label{\figlabel{thermostated_holder:core_drawing}}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/insulation}
-	\caption[%
-		Teflon insulation of thermostated cell holder.%
-	]{%
-		\captiontitle{%
-			Teflon insulation of thermostated cell holder.%
-		}
-	}
-	\label{\figlabel{thermostated_holder:insulation_drawing}}
-\end{figure}
+The sample cell could be covered inside the holder by a Teflon cover.
 
 The temperature was maintained by two thermoelectric Peltier modules
 (TEC1-12710) chained in series for better performance, where the second module
@@ -190,46 +138,16 @@ were converted to a bipolar signal by constructed H bridge so the direction
 and intensity of heat transfer through the Peltier modules could be controlled.
 
 An aluminum profile heat sink
-(\figref{thermostated_holder:heat_sink_drawing})
 with two ventilators (Sukon, 2500\,rpm, 17\,W) was attached to the
 thermoelectric modules to increase efficiency.
 The aluminum profile was insulated from the copper core block by the Teflon
 layer.
 A universal aluminum right-angle adapter
-(\figref{thermostated_holder:stand_drawing})
 mounted the whole sample holder through the heat sink to a three-axis manual
 stage (Thorlabs).
 The adapter supported securing of different sample holders in various
 positions. Overall 3D image of the holder can be seen in
 \figref{thermostated_holder:3d}.
-
-\begin{figure}
-	\centering
-	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/stand}
-	\caption[%
-		Teflon cover of sample cell and universal aluminum right-angle
-		adapter for thermostated sample holder.%
-	]{%
-		\captiontitle{%
-			Teflon cover of sample cell (on the right) and universal aluminum
-			right-angle adapter for thermostated sample holder (on the right).%
-		}
-	}
-	\label{\figlabel{thermostated_holder:stand_drawing}}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\ig{1}{results_and_discussion/assets/thermostated_holder_drawing/heat_sink}
-	\caption[%
-		Aluminum profile heat sink for the thermostated cell holder.%
-	]{%
-		\captiontitle{%
-			Aluminum profile heat sink for the thermostated cell holder.%
-		}
-	}
-	\label{\figlabel{thermostated_holder:heat_sink_drawing}}
-\end{figure}
 
 \begin{figure}
 	\centering
@@ -263,13 +181,13 @@ temperatures less then 15\,\textcelsius{} the continuous flow of dry air or
 nitrogen was directed to the front surface of the sample cell.
 
 The laser beam, which had horizontal polarization, was guided in a loop using
-right angle prisms to maintain the right polarization direction.
+right angle prisms (M2 and M3) to maintain the right polarization direction.
 Pellin-Broca prism (PB) separated the excitation beam from unwanted light
 (for example, from fundamental laser lines).
 The unwanted light was guided to a beam blocker (BB).
 
-\emph{M3} and hit the bottom of the sample cell, having polarization
-perpendicular to the direction of scattered signal acquisition.
+The excitation laser then hit the bottom of the sample cell, having
+polarization perpendicular to the direction of scattered signal acquisition.
 The excitation beam was focused onto the sample by the plano-convex lens
 \emph{L1} with a focal length of 100\,mm.
 It was calculated that shorter focal lengths would be more optimal for the
